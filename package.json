@@ -1,0 +1,73 @@
+{
+  "name": "vscode-ai-assistant",
+  "displayName": "AI Development Assistant",
+  "description": "Advanced AI-powered development assistant for VSCode",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-ai-assistant.showDashboard"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-ai-assistant.showDashboard",
+        "title": "Show AI Assistant Dashboard"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-assistant",
+          "title": "AI Assistant",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ai-assistant": [
+        {
+          "id": "projectExplorer",
+          "name": "Project Explorer"
+        },
+        {
+          "id": "chat",
+          "name": "AI Chat"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p ./ && vite build",
+    "dev": "tsc -p ./ && vite build --watch",
+    "lint": "eslint src --ext ts,tsx",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "openai": "^4.28.0",
+    "marked": "^12.0.0",
+    "d3": "^7.8.5"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.86.0",
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.2",
+    "@types/marked": "^5.0.2",
+    "@types/d3": "^7.4.3",
+    "vitest": "^1.3.1"
+  }
+}
